@@ -1,0 +1,25 @@
+# Entorno virtual
+.venv/
+venv/
+
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Carpetas de configuración
+*.idea/
+.vscode/
+
+# Dependencias
+*.egg-info/
+.eggs/
+
+# Archivos de entorno
+.env
+.env.*
+
+# Directorios de build
+build/
+dist/
