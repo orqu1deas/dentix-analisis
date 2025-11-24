@@ -4,7 +4,7 @@
 import pandas as pd
 
 
-def load_base(path: str = "../../data/BaseDentix.xlsx") -> pd.DataFrame:
+def load_base(path: str = "data/BaseDentix.xlsx") -> pd.DataFrame:
     try:
         df = pd.read_excel(path)
         return df
