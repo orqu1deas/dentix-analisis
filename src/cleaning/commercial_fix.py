@@ -28,11 +28,9 @@ def fix_commercial(df: pd.DataFrame) -> pd.DataFrame:
 
     df = df.copy()
 
-    # Detectar IDs que tienen más de un comercial asociado
     comercial_count = df.groupby("IDENTIFICACION COMERCIAL")["COMERCIAL"].nunique()
     ids_multiples = comercial_count[comercial_count > 1].index
 
-    # Lista de tuplas válidas (ID, COMERCIAL)
     tuplas_validas = (
         df[df["IDENTIFICACION COMERCIAL"].isin(ids_multiples)]
         .groupby(["IDENTIFICACION COMERCIAL", "COMERCIAL"])
@@ -40,11 +38,9 @@ def fix_commercial(df: pd.DataFrame) -> pd.DataFrame:
         .index.tolist()
     )
 
-    # Sustitución de comerciales sin prefijo válido
     for comercial in df["COMERCIAL"].unique():
         if not prefix_ok(comercial):
 
-            # Buscar IDs donde ese comercial aparece
             for id_com, com_valido in tuplas_validas:
                 if comercial == com_valido:
 
